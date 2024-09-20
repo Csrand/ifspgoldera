@@ -6,6 +6,6 @@ int main(){
     printf("Informe seu peso:\n");
     scanf("%d", &peso);
     em_gramas = peso * 1000;
-    printf("Seu peso em gramas e: %d gramas\n78", em_gramas);
+    printf("Seu peso em gramas e: %d gramas\n", em_gramas);
     return 0;
 }
