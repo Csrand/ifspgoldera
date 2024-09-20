@@ -2,15 +2,17 @@
 #include<iomanip>
 using namespace std;
 int main(){
-    float base, altura, area;
+    float raio, area;
     cout << "*****************************" << "\n";
-    cout << "**** CALCULADORA DE AREA ****" << "\n";
+    cout << "******** CALCULADORA ********" << "\n";
+    cout << "************ DE *************" << "\n";
+    cout << "***** AREA DO CIRCULO *******" << "\n";
     cout << "*****************************" << "\n";
-    cout << "Digite o valor da base:" << "\n";
-    cin >> base;
-    cout << "Digite o valor da altura:" << "\n";
-    cin >> altura;
-    area = (base * altura)/2;
+
+
+    cout << "Digite o valor do raio:" << "\n";
+    cin >> raio;
+    area = 3.14 *(raio * raio);
     cout <<"Resultado:" <<"\n" << area;
     return 0;
     }

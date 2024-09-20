@@ -13,4 +13,5 @@ int main()
     scanf("%f", & altura);
      area = (base * altura)/2;
     printf("Area Do Retangulo: %.2f\n", area );
-    return 0;}
+    return 0;
+    }
