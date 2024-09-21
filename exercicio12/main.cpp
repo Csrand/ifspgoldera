@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     float custo_teatro, valor_do_ingresso, vendas_min;
-    cout << "Calcule quantos ingressos voce tem que vender: "<<"\n";
+    cout << "Calcule quantos ingressos voce tem que vender "<<"\n";
     cout << "Informe o Custo do Local do Evento:" <<"\n";
         cin >> custo_teatro;
     cout <<"Informe o valor do ingresso:" <<"\n";
