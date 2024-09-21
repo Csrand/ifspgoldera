@@ -9,7 +9,7 @@ int main(){
         cout <<"informe a taxa de juros:" <<"\n";
         cin >> taxa;
              rendimento = deposito * (taxa / 100);
-            total = deposito + rendimento;
+             total = deposito + rendimento;
         cout << fixed << setprecision(2); 
         cout << "Seu rendimento foi de:" <<"\n" << rendimento << " Reais" <<"\n";
         cout << "Valor total:" <<"\n" << total << " Reais";
