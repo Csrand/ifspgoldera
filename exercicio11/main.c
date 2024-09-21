@@ -12,7 +12,7 @@ int main()
     printf("*****************************\n");
 
     printf("Digite um numero:\n");
-        scanf("%d", & num);
+    scanf("%d", & num);
             quadrado = num * num;
             cubo = num * num * num;
     printf("O seu numero elevado ao quadrado e:\n %d\n", quadrado);
