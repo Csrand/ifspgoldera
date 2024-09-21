@@ -12,7 +12,7 @@ int main(){
     cout << "Digite um numero:" << "\n";
     cin >> num;
      quadrado = num * num;
-            cubo = num * num * num;
+     cubo = num * num * num;
     cout <<"O seu numero elevado ao quadrado e:" <<"\n" << quadrado << "\n";
     cout <<"O seu numero elevado ao cubo e:" <<"\n" << cubo << "\n";
     return 0;
