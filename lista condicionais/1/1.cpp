@@ -17,6 +17,9 @@ using namespace std;
                 menor = n3;
 
             }
+            else{
+                meio = n3;
+                menor = n2;            }
         }
         else{
             meio = n1;
