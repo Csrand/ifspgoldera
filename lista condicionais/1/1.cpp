@@ -1,6 +1,7 @@
 #include<iostream>
 using namespace std;
-main(){
+ int main(){
+    setlocale(LC_ALL, "pt_BR.UTF-8");
     int n1, n2, n3, maior, menor, meio;
     cout << "Digite um numero: ";
     cin >> n1;
@@ -30,9 +31,10 @@ main(){
                 meio = n1;
                 menor = n3;
             }
-            else
+            else{
                 meio = n3;
                 menor = n1;
+            }
 
         }
         else{
@@ -43,6 +45,6 @@ main(){
         }
     }
     cout << "Seus numeros em ordem decrescente:\n";
-    cout << maior << " " << meio << "" << menor;
+    cout << maior << " " << meio << " " << menor <<"\n";
     return 0;
 }
