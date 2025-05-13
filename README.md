@@ -21,31 +21,41 @@ int contarOcorrencias(Node* head, int precoAtual) {
     return contador;
 }
 	
-void trocarPreco(Node* head, int precoAtual, int novoPreco, int &total_Trocas){
-	Node* atual = head;
-	if(atual == nullptr){ // caso base
-		return;	
-	}
-	if(atual -> precoAtual == precoAtual){
-		atual -> precoAtual = novoPreco;   
-		total_Trocas ++;
+void trocarPreco(Node* atual, int precoAtual, int novoPreco, int *total_Trocas){
+	
+	if(atual != NULL){
+		if(atual -> precoAtual == precoAtual){
+			atual -> precoAtual = novoPreco;   
+			//(*total_Trocas) ++;
+			//cout << endl << total_Trocas;
 		}
-	
-	trocarPreco(atual -> proximo, precoAtual, novoPreco, total_Trocas);	
-	
-	
-	
+		trocarPreco(atual -> proximo, precoAtual, novoPreco, total_Trocas);	
 	}
-void inserirInicio(Node* &head, int precoAtual){
-
-  	Node* novo = new Node{precoAtual, 0, nullptr};
-    novo->proximo = head; 
-    head = novo;           
 }
 
+void inserirInicio(Node **head, int precoAtual){
+	 Node* novo;
+	 
+	novo = (Node*) malloc(sizeof(Node*));	  
+    
+	
+	if(novo != NULL){
+		novo -> precoAtual = precoAtual;
+		if(head != NULL){
+    		novo->proximo = *head; 
+    		*head = novo;
+		}
+		else{ 
+			*head = novo;
+			novo -> proximo = NULL;		
+							}
+	
+	}
+
+}
 void imprimirLista(Node* head) {
     Node* temp = head;
-    while (temp) {
+    while (temp!= NULL) {
         cout << temp->precoAtual << " ";
         temp = temp->proximo;
     }
@@ -54,28 +64,30 @@ void imprimirLista(Node* head) {
 
 
 int main(){
-	int precoAntigo = 10;
+	int precoAntigo = 20;
 	int precoNovo = 15;
 	int ocorrencias;
 	int total_Trocas = 0;
 	
 	
-	Node* head = nullptr;
+	Node* head = NULL;
 	
-	inserirInicio(head, 10);
-	inserirInicio(head, 10);
-	inserirInicio(head, 17);
-	inserirInicio(head, 20);
-	inserirInicio(head, 20);
-	inserirInicio(head, 20);	
-	total_Trocas = contarOcorrencias(head, precoAntigo);
-	cout <<"a lista atual e: ";
+	inserirInicio(&head, 10);
+	inserirInicio(&head, 10);
+	inserirInicio(&head, 17);
+	inserirInicio(&head, 20);
+	inserirInicio(&head, 20);
+	inserirInicio(&head, 20);	
+	//cout <<"a lista atual e: ";
 	imprimirLista(head);
-	ocorrencias = contarOcorrencias(head, precoAntigo);
-	cout << " o total de valores de produtos que custam 10 e: " << ocorrencias <<endl;	
-	trocarPreco(head, precoAntigo, precoNovo ,total_Trocas);
-	cout << " o novo valor agora e 15 e a lista atualizada fica";
+	trocarPreco(head, 20, 200 ,&total_Trocas);
 	imprimirLista(head);
-		
+	//cout << total_Trocas;
+	/*correncias = contarOcorrencias(head, precoAntigo);
+	cout << " o total de valores de produtos que custam 20 e: " << ocorrencias <<endl;	
+	
+	cout << " o novo valor agora e 15 e a lista atualizada fica: ";
+	imprimirLista(head);
+	*/	
 	return 0;
 }
