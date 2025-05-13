@@ -1,6 +1,3 @@
-// corrigir 
-
-
 #include <iostream>
 using namespace std;
 
@@ -14,10 +11,9 @@ struct Node{
 
 int contarOcorrencias(Node* head, int precoAtual) {
     int contador = 0;
-    int aux = precoAtual;
     Node* temp = head;
     while (temp) {
-        if (temp -> precoAtual == aux){
+        if (temp -> precoAtual == precoAtual){
             contador++;
         }
         temp = temp->proximo;
@@ -25,24 +21,24 @@ int contarOcorrencias(Node* head, int precoAtual) {
     return contador;
 }
 	
-int trocarPreco(Node*& head, int precoAtual, int novoPreco, int &total_Trocas){
+void trocarPreco(Node* head, int precoAtual, int novoPreco, int &total_Trocas){
 	Node* atual = head;
-	int aux = precoAtual;
-	if(atual -> proximo == nullptr){ // caso base
-		return 0;	
+	if(atual == nullptr){ // caso base
+		return;	
 	}
-	if(atual -> precoAtual == aux){
+	if(atual -> precoAtual == precoAtual){
 		atual -> precoAtual = novoPreco;   
-	
+		total_Trocas ++;
 		}
-	 return trocarPreco(Node*& head, int precoAtual, int novoPreco, int &total_Trocas - 1);	
+	
+	trocarPreco(atual -> proximo, precoAtual, novoPreco, total_Trocas);	
 	
 	
 	
 	}
-void inserirInicio(Node*& head, int precoAtual){
+void inserirInicio(Node* &head, int precoAtual){
 
-  	Node* novo = new Node{precoAtual, nullptr};
+  	Node* novo = new Node{precoAtual, 0, nullptr};
     novo->proximo = head; 
     head = novo;           
 }
@@ -50,7 +46,7 @@ void inserirInicio(Node*& head, int precoAtual){
 void imprimirLista(Node* head) {
     Node* temp = head;
     while (temp) {
-        cout << temp->valor << " ";
+        cout << temp->precoAtual << " ";
         temp = temp->proximo;
     }
     cout << endl;
@@ -58,22 +54,28 @@ void imprimirLista(Node* head) {
 
 
 int main(){
-	int a = 5;
-	int b = 10;
+	int precoAntigo = 10;
+	int precoNovo = 15;
+	int ocorrencias;
 	int total_Trocas = 0;
+	
 	
 	Node* head = nullptr;
 	
-	inserirInicio(10);
-	inserirInicio(10);
-	inserirInicio(15);
-	inserirInicio(20);
-	inserirInicio(20);
-	inserirInicio(20);	
-	total_Trocas = contarOcorrencia(head, b);
-	
+	inserirInicio(head, 10);
+	inserirInicio(head, 10);
+	inserirInicio(head, 17);
+	inserirInicio(head, 20);
+	inserirInicio(head, 20);
+	inserirInicio(head, 20);	
+	total_Trocas = contarOcorrencias(head, precoAntigo);
 	cout <<"a lista atual e: ";
-	imprimirLista(head);	
-	
+	imprimirLista(head);
+	ocorrencias = contarOcorrencias(head, precoAntigo);
+	cout << " o total de valores de produtos que custam 10 e: " << ocorrencias <<endl;	
+	trocarPreco(head, precoAntigo, precoNovo ,total_Trocas);
+	cout << " o novo valor agora e 15 e a lista atualizada fica";
+	imprimirLista(head);
+		
 	return 0;
 }
